@@ -8,27 +8,6 @@ function Header({ completedCount }) {
           <span className="font-[Sora] text-2xl text-primary-container tracking-tighter font-bold">
             100 AI
           </span>
-          <div className="h-6 w-px bg-outline-variant/30 hidden md:block" />
-          <nav className="hidden md:flex gap-6 items-center">
-            <a
-              className="text-primary-container font-[JetBrains_Mono] text-sm font-bold hover:text-primary-fixed transition-colors duration-300"
-              href="#"
-            >
-              档案
-            </a>
-            <a
-              className="text-on-surface-variant font-[JetBrains_Mono] text-sm hover:text-primary-fixed transition-colors duration-300"
-              href="#"
-            >
-              协议
-            </a>
-            <a
-              className="text-on-surface-variant font-[JetBrains_Mono] text-sm hover:text-primary-fixed transition-colors duration-300"
-              href="#"
-            >
-              节点
-            </a>
-          </nav>
         </div>
         <div className="flex items-center gap-6">
           <div className="flex flex-col items-end">

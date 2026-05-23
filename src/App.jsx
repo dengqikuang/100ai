@@ -5,6 +5,7 @@ import "./App.css";
 
 function App() {
   const completedCount = projects.filter((p) => p.completed).length;
+  const pendingCount = projects.length - completedCount;
 
   return (
     <div className="text-on-surface font-[Sora] overflow-x-hidden">
@@ -16,27 +17,27 @@ function App() {
           <div className="flex flex-col md:flex-row justify-between items-end gap-8">
             <div className="max-w-2xl">
               <h1 className="font-[Sora] text-5xl text-primary font-bold tracking-tight mb-4">
-                神经档案馆
+                100 Products
               </h1>
               <p className="text-on-surface-variant max-w-xl">
-                100个自主智能实验的系统记录。每一个单元都代表了合成生态系统中的独特架构演变。
+                记录 vibe coding 的 100 个产品
               </p>
             </div>
             <div className="flex gap-4">
               <div className="p-4 border border-outline-variant/20 bg-surface-container-low rounded-lg">
                 <p className="font-[JetBrains_Mono] text-xs text-outline mb-1 font-bold">
-                  运行时间
+                  已上线
                 </p>
                 <p className="font-[JetBrains_Mono] text-2xl text-primary-container font-medium">
-                  99.98%
+                  {completedCount}
                 </p>
               </div>
               <div className="p-4 border border-outline-variant/20 bg-surface-container-low rounded-lg">
                 <p className="font-[JetBrains_Mono] text-xs text-outline mb-1 font-bold">
-                  延迟
+                  待实现
                 </p>
                 <p className="font-[JetBrains_Mono] text-2xl text-secondary font-medium">
-                  14MS
+                  {pendingCount}
                 </p>
               </div>
             </div>
@@ -52,30 +53,20 @@ function App() {
         <div className="flex flex-col md:flex-row justify-between items-center px-section-margin gap-cell-gap max-w-container-max mx-auto">
           <div className="flex flex-col items-center md:items-start gap-2">
             <span className="font-[JetBrains_Mono] text-xs text-on-surface-variant font-bold">
-              100 AI 项目
+              100 AI
             </span>
             <span className="font-[JetBrains_Mono] text-sm text-secondary-fixed-dim">
-              © 2024 神经档案馆。保留所有权利。
+              © 2025 100 AI
             </span>
           </div>
           <div className="flex gap-8">
             <a
               className="font-[JetBrains_Mono] text-sm text-outline hover:text-secondary hover:tracking-widest transition-all duration-500"
-              href="#"
+              href="https://github.com/dengqikuang"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              终端
-            </a>
-            <a
-              className="font-[JetBrains_Mono] text-sm text-outline hover:text-secondary hover:tracking-widest transition-all duration-500"
-              href="#"
-            >
-              系统日志
-            </a>
-            <a
-              className="font-[JetBrains_Mono] text-sm text-outline hover:text-secondary hover:tracking-widest transition-all duration-500"
-              href="#"
-            >
-              数据流
+              GitHub
             </a>
           </div>
           <div className="flex items-center gap-4">
