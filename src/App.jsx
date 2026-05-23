@@ -59,16 +59,6 @@ function App() {
               © 2025 100 AI
             </span>
           </div>
-          <div className="flex gap-8">
-            <a
-              className="font-[JetBrains_Mono] text-sm text-outline hover:text-secondary hover:tracking-widest transition-all duration-500"
-              href="https://github.com/dengqikuang"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
-          </div>
           <div className="flex items-center gap-4">
             <div className="flex gap-1">
               <div className="w-2 h-2 bg-primary-container animate-pulse" />
