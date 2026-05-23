@@ -40,10 +40,7 @@ function Card({ project }) {
   const isLarge = size === "large";
 
   return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
+    <div
       className={`relative group cursor-pointer overflow-hidden rounded transition-all duration-500 hover:scale-[1.02] border ${c.border} bg-surface-container-high completed-glow block ${
         isLarge ? "col-span-2 row-span-2" : "col-span-1 row-span-1"
       }`}
@@ -79,17 +76,17 @@ function Card({ project }) {
           >
             {name}
           </h3>
-          {isLarge && description && (
-            <p className="text-on-surface-variant text-sm mt-2 line-clamp-2">
+          {description && (
+            <p className={`text-on-surface-variant mt-2 ${isLarge ? "text-sm" : "text-xs"}`}>
               {description}
             </p>
           )}
         </div>
 
         <div className="flex flex-wrap gap-2 mt-4">
-          {tags.map((tag) => (
+          {tags.map((tag, idx) => (
             <span
-              key={tag}
+              key={idx}
               className={`font-[JetBrains_Mono] text-[10px] border ${c.tag} px-2 py-0.5 rounded`}
             >
               {tag}
@@ -104,7 +101,17 @@ function Card({ project }) {
           )}
         </div>
       </div>
-    </a>
+
+      {url ? (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0 z-10"
+          aria-label={name}
+        />
+      ) : null}
+    </div>
   );
 }
 
