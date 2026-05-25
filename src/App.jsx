@@ -6,69 +6,93 @@ import "./App.css";
 function App() {
   const completedCount = projects.filter((p) => p.completed).length;
   const pendingCount = projects.length - completedCount;
+  const completionRate = Math.round((completedCount / projects.length) * 100);
+  const featuredProjects = projects.filter((p) => p.completed).slice(0, 2);
 
   return (
-    <div className="text-on-surface font-[Sora] overflow-x-hidden">
+    <div className="min-h-screen text-on-surface font-[Sora] overflow-x-hidden">
       <Header completedCount={completedCount} />
 
-      <main className="pt-32 pb-20 px-section-margin max-w-container-max mx-auto min-h-screen">
-        {/* Hero */}
-        <section className="mb-16">
-          <div className="flex flex-col md:flex-row justify-between items-end gap-8">
-            <div className="max-w-2xl">
-              <h1 className="font-[Sora] text-5xl text-primary font-bold tracking-tight mb-4">
-                100 Products
-              </h1>
-              <p className="text-on-surface-variant max-w-xl">
-                记录 vibe coding 的 100 个产品
-              </p>
+      <main className="pt-28 pb-20 px-section-margin max-w-container-max mx-auto">
+        <section className="hero-shell mb-14">
+          <div className="hero-copy">
+            <span className="eyebrow">Vibe Coding Archive</span>
+            <h1 className="hero-title">
+              <span>100 个 AI 产品</span>
+              <span>把想法做成</span>
+              <span>能打开的东西。</span>
+            </h1>
+            <p className="hero-lede">
+              这里记录从问题、原型到上线的连续实验。每个格子都是一个产品位置，已上线的可以直接访问，未完成的保留为空位，提醒下一次动手。
+            </p>
+          </div>
+
+          <div className="progress-panel" aria-label="项目进度">
+            <div className="progress-head">
+              <span>完成进度</span>
+              <strong>{completionRate}%</strong>
             </div>
-            <div className="flex gap-4">
-              <div className="p-4 border border-outline-variant/20 bg-surface-container-low rounded-lg">
-                <p className="font-[JetBrains_Mono] text-xs text-outline mb-1 font-bold">
-                  已上线
-                </p>
-                <p className="font-[JetBrains_Mono] text-2xl text-primary-container font-medium">
-                  {completedCount}
-                </p>
-              </div>
-              <div className="p-4 border border-outline-variant/20 bg-surface-container-low rounded-lg">
-                <p className="font-[JetBrains_Mono] text-xs text-outline mb-1 font-bold">
-                  待实现
-                </p>
-                <p className="font-[JetBrains_Mono] text-2xl text-secondary font-medium">
-                  {pendingCount}
-                </p>
-              </div>
+            <div className="progress-track">
+              <span style={{ width: `${completionRate}%` }} />
             </div>
+            <dl className="progress-stats">
+              <div>
+                <dt>已上线</dt>
+                <dd>{String(completedCount).padStart(2, "0")}</dd>
+              </div>
+              <div>
+                <dt>待实现</dt>
+                <dd>{String(pendingCount).padStart(2, "0")}</dd>
+              </div>
+              <div>
+                <dt>总目标</dt>
+                <dd>100</dd>
+              </div>
+            </dl>
           </div>
         </section>
 
-        {/* Grid */}
+        {featuredProjects.length > 0 && (
+          <section className="featured-strip" aria-label="已上线项目">
+            <div>
+              <span className="section-kicker">已上线</span>
+              <h2>先看已经跑起来的产品</h2>
+            </div>
+            <div className="featured-list">
+              {featuredProjects.map((project) => (
+                <a key={project.id} href={project.url} target="_blank" rel="noopener noreferrer">
+                  <span>{String(project.id).padStart(3, "0")}</span>
+                  <strong>{project.name}</strong>
+                  <em>访问</em>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <section className="archive-head">
+          <div>
+            <span className="section-kicker">Archive</span>
+            <h2>产品格子</h2>
+          </div>
+          <p>
+            已上线项目显示为实心档案卡，空位保留编号，形成从 001 到 100 的连续记录。
+          </p>
+        </section>
+
         <Grid projects={projects} />
       </main>
 
-      {/* Footer */}
-      <footer className="w-full py-section-margin border-t border-outline-variant/20 bg-background mt-20">
-        <div className="flex flex-col md:flex-row justify-between items-center px-section-margin gap-cell-gap max-w-container-max mx-auto">
-          <div className="flex flex-col items-center md:items-start gap-2">
-            <span className="font-[JetBrains_Mono] text-xs text-on-surface-variant font-bold">
-              100 AI
-            </span>
-            <span className="font-[JetBrains_Mono] text-sm text-secondary-fixed-dim">
-              © 2025 100 AI
-            </span>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="flex gap-1">
-              <div className="w-2 h-2 bg-primary-container animate-pulse" />
-              <div className="w-2 h-2 bg-primary-container/40" />
-              <div className="w-2 h-2 bg-primary-container/20" />
-            </div>
-            <span className="font-[JetBrains_Mono] text-[10px] text-outline">
-              已建立安全连接
-            </span>
-          </div>
+      <footer className="site-footer">
+        <div>
+          <span className="footer-mark">100 AI</span>
+          <span>持续记录 AI 产品实验</span>
+        </div>
+        <div className="footer-signal" aria-label="连接状态">
+          <span />
+          <span />
+          <span />
+          <em>ONLINE</em>
         </div>
       </footer>
     </div>

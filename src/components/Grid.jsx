@@ -2,7 +2,7 @@ import Card from "./Card";
 
 function Grid({ projects }) {
   return (
-    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-cell-gap">
+    <div id="archive" className="project-grid">
       {projects.map((project) => (
         <Card key={project.id} project={project} />
       ))}
