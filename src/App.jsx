@@ -75,9 +75,6 @@ function App() {
             <span className="section-kicker">Archive</span>
             <h2>产品格子</h2>
           </div>
-          <p>
-            已上线项目显示为实心档案卡，空位保留编号，形成从 001 到 100 的连续记录。
-          </p>
         </section>
 
         <Grid projects={projects} />

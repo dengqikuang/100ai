@@ -273,6 +273,11 @@ a {
   line-height: 1.72;
 }
 
+.archive-head {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
 .featured-list {
   display: grid;
   gap: 0.7rem;
